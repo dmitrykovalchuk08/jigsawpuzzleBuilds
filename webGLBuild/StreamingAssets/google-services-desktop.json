@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "864739378437",
-    "project_id": "pkx-f-5f847",
-    "storage_bucket": "pkx-f-5f847.appspot.com"
+    "project_number": "323832948113",
+    "project_id": "pkx-m-82ac3",
+    "storage_bucket": "pkx-m-82ac3.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:864739378437:android:30d4d2acde9f24da03636c",
+        "mobilesdk_app_id": "1:323832948113:android:9bbda2d1d148be3bd86630",
         "android_client_info": {
-          "package_name": "com.ampfork.pkxq"
+          "package_name": "com.ampfork.pkxk"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBrmUL6UDsYVbyV30M879csoMkf2NVzC3w"
+          "current_key": "AIzaSyDtFIvOXLkMbn6-jh2h-TmUD1SZsDIKVgw"
         }
       ],
       "services": {
