@@ -45,6 +45,7 @@
 </head>
 
 <body>
+
 	<div id="gameContainer">
 		<canvas id="unity-canvas" data-pixel-art=""></canvas>
 		<script src="Build/webGLBuild.loader.js"></script>
@@ -111,6 +112,32 @@
 			}
 		</script>
 	</div>
+
+	<!-- Google Analytics -->
+	<script type="module">
+		// Import the functions you need from the SDKs you need
+		import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+		import { getAnalytics, logEvent} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-analytics.js";
+
+		const firebaseConfig = {
+			apiKey: "AIzaSyA4ZC05RLOdrbyrUQpEeLrTOOPohelzK18",
+			authDomain: "pkx-f-5f847.firebaseapp.com",
+			projectId: "pkx-f-5f847",
+			storageBucket: "pkx-f-5f847.firebasestorage.app",
+			messagingSenderId: "864739378437",
+			appId: "1:864739378437:web:c1b1c8f66ccc286403636c",
+			measurementId: "G-17EYFWY8XL"
+		};
+
+		// Initialize Firebase
+		const app = initializeApp(firebaseConfig);
+		const analytics = getAnalytics(app);
+
+		window.analytics = analytics;
+		window.logEvent = logEvent;
+	</script>
+	<!-- End Google Analytics -->
+
 </body>
 
 </html>
