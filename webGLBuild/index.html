@@ -137,7 +137,44 @@
 		window.logEvent = logEvent;
 	</script>
 	<!-- End Google Analytics -->
+	<!-- Mobile browser detection -->
+	<script type="text/javascript">
+		(function() {
+			function isMobileBrowser() {
+				// First, check if userAgentData (modern feature) indicates a mobile device
+				if (navigator.userAgentData && navigator.userAgentData.mobile) {
+					return true;
+				}
 
+				// Regular expression to match mobile device user agents
+				const mobileUserAgentPattern = /Mobi|Android|iPhone|iPad|iPod|Windows Phone|BlackBerry|BB10|Opera Mini|IEMobile|Mobile Safari|webOS|Symbian|Kindle|Silk|Bada|Tizen|MeeGo/i;
+
+				// Check the user agent string
+				if (mobileUserAgentPattern.test(navigator.userAgent)) {
+					return true;
+				}
+
+				// Additional check for window properties (tablets, phones in landscape)
+				if (typeof window.orientation !== 'undefined' || navigator.maxTouchPoints > 1) {
+					return true;
+				}
+
+				return false;
+			}
+
+			// Auto-execute logic based on whether it's a mobile browser
+			if (isMobileBrowser()) {
+				console.log("Running in a mobile web browser");
+				screen.orientation.lock("landscape").catch(function (e) {
+					console.log("error while locking orientation " + e);
+				});
+				
+			} else {
+				console.log("Running in a desktop web browser");
+			}
+		})();
+	</script>
+	<!-- End Mobile browser detection -->
 </body>
 
 </html>
