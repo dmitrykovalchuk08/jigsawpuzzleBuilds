@@ -194,6 +194,23 @@
 			console.log("Running in a desktop web browser");
 			button.style.display = 'none'; // Hide the button
 		}
+
+		// Add an event handler for the button
+		button.addEventListener('click', () => {
+			console.log('Button was clicked!');
+			var elem = document.getElementById("gameContainer");
+			var isInFullScreen = document.fullscreenElement !== null;
+			if (!isInFullScreen) {
+				elem.requestFullscreen();
+				screen.orientation.lock("landscape").catch(function (e) {
+					console.log("error while locking orientation " + e);
+				});
+			}
+			else if (isInFullScreen) {
+				document.exitFullscreen();
+				screen.orientation.unlock();
+			}
+		});
 	</script>
 </body>
 
