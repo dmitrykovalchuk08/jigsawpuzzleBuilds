@@ -43,7 +43,7 @@
 		}
 
 		#fullScreenButton {
-			display: none; /* Initially hidden */
+			display: none; 
 			position: fixed;
 			bottom: 20px; /* Distance from the bottom of the screen */
 			right: 20px; /* Distance from the right of the screen */
@@ -51,9 +51,10 @@
 			background-color: #007bff; /* Blue color */
 			color: white;
 			border: none;
-			border-radius: 5px;
+			border-radius: 10px;
 			cursor: pointer;
-			font-size: 16px;
+			font-size: 24px;
+			z-index: 999;
 		}
 
 		#fullScreenButton:hover {
@@ -128,9 +129,9 @@
 				document.getElementsByTagName('head')[0].appendChild(meta);
 			}
 		</script>
+		
+		<button id="fullScreenButton">Full Screen</button>
 	</div>
-
-	<button id="fullScreenButton">Full Screen</button>
 	
 	<!-- Google Analytics -->
 	<script type="module">
@@ -187,13 +188,15 @@
 				
 		const button = document.getElementById('fullScreenButton');
 
-		if (isMobileBrowser()) {
-			console.log("Running in a mobile web browser");
-			button.style.display = 'block'; // Show the button
-		} else {
-			console.log("Running in a desktop web browser");
-			button.style.display = 'none'; // Hide the button
-		}
+		// if (isMobileBrowser()) {
+		// 	console.log("Running in a mobile web browser");
+		// 	button.style.display = 'block'; // Show the button
+		// } else {
+		// 	console.log("Running in a desktop web browser");
+		// 	button.style.display = 'none'; // Hide the button
+		// }
+		
+		button.style.display = 'block'; // Show the button
 
 		// Add an event handler for the button
 		button.addEventListener('click', () => {
@@ -205,10 +208,12 @@
 				screen.orientation.lock("landscape").catch(function (e) {
 					console.log("error while locking orientation " + e);
 				});
+				button.innerText = "Exit FullScreen";
 			}
 			else if (isInFullScreen) {
 				document.exitFullscreen();
 				screen.orientation.unlock();
+				button.innerText = "FullScreen";
 			}
 		});
 	</script>
