@@ -51,10 +51,10 @@
 			background-color: #007bff; /* Blue color */
 			color: white;
 			border: none;
-			border-radius: 10px;
+			border-radius: 5px;
 			cursor: pointer;
-			font-size: 24px;
-			z-index: 999;
+			font-size: 20px;
+			z-index: 9999;
 		}
 
 		#fullScreenButton:hover {
@@ -181,23 +181,18 @@
 
 			return false;
 		}
-
-		// screen.orientation.lock("landscape").catch(function (e) {
-		// 	console.log("error while locking orientation " + e);
-		// });
-				
+	
 		const button = document.getElementById('fullScreenButton');
 
-		// if (isMobileBrowser()) {
-		// 	console.log("Running in a mobile web browser");
-		// 	button.style.display = 'block'; // Show the button
-		// } else {
-		// 	console.log("Running in a desktop web browser");
-		// 	button.style.display = 'none'; // Hide the button
-		// }
+		if (isMobileBrowser()) 
+		{
+			console.log("Running in a mobile web browser");
+			button.style.display = 'block'; // Show the button
+		} else {
+			console.log("Running in a desktop web browser");
+			button.style.display = 'none'; // Hide the button
+		}
 		
-		button.style.display = 'block'; // Show the button
-
 		// Add an event handler for the button
 		button.addEventListener('click', () => {
 			console.log('Button was clicked!');
@@ -209,11 +204,13 @@
 					console.log("error while locking orientation " + e);
 				});
 				button.innerText = "Exit FullScreen";
+				button.style.fontSize = "14px";
 			}
 			else if (isInFullScreen) {
 				document.exitFullscreen();
 				screen.orientation.unlock();
 				button.innerText = "FullScreen";
+				button.style.fontSize = "20px";
 			}
 		});
 	</script>
