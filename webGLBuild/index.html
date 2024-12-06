@@ -27,6 +27,7 @@
 
 		div#gameContainer canvas {
 			position: absolute;
+			
 		}
 
 		div#gameContainer canvas[data-pixel-art="true"] {
@@ -78,12 +79,7 @@
 				productName: "Puzzle Queen",
 				productVersion: "1.0.0",
 			};
-			var scaleToFit;
-			try {
-				scaleToFit = !!JSON.parse("");
-			} catch (e) {
-				scaleToFit = true;
-			}
+			
 			function progressHandler(progress) {
 				var percent = progress * 100 + '%';
 				canvas.style.background = 'linear-gradient(to right, white, white ' + percent + ', transparent ' + percent + ', transparent) no-repeat center';
@@ -91,24 +87,15 @@
 			}
 			function onResize() {
 				var container = canvas.parentElement;
-				var w;
-				var h;
-
-				if (scaleToFit) {
-					w = window.innerWidth;
-					h = window.innerHeight;
-
-					var r = 600 / 960;
-
-					if (w * r > window.innerHeight) {
-						w = Math.min(w, Math.ceil(h / r));
-					}
-					h = Math.floor(w * r);
-				} else {
-					w = 960;
-					h = 600;
+				
+				var w = window.innerWidth;
+				var h = window.innerHeight;
+				var r = 600 / 960;
+				if (w * r > window.innerHeight) {
+					w = Math.min(w, Math.ceil(h / r));
 				}
-
+				h = Math.floor(w * r);
+				
 				container.style.width = canvas.style.width = w + "px";
 				container.style.height = canvas.style.height = h + "px";
 				container.style.top = Math.floor((window.innerHeight - h) / 2) + "px";
@@ -130,7 +117,7 @@
 			}
 		</script>
 		
-		<button id="fullScreenButton">Full Screen</button>
+		<button id="fullScreenButton">Fullscreen</button>
 	</div>
 	
 	<!-- Google Analytics -->
@@ -184,14 +171,14 @@
 	
 		const button = document.getElementById('fullScreenButton');
 
-		//if (isMobileBrowser()) 
-		//{
-		//	console.log("Running in a mobile web browser");
+		if (isMobileBrowser()) 
+		{
+			console.log("Running in a mobile web browser");
 			button.style.display = 'block'; // Show the button
-		//} else {
-		//	console.log("Running in a desktop web browser");
-		//	button.style.display = 'none'; // Hide the button
-		//}
+		} else {
+			console.log("Running in a desktop web browser");
+			button.style.display = 'none'; // Hide the button
+		}
 		
 		// Add an event handler for the button
 		button.addEventListener('click', () => {
