@@ -41,12 +41,7 @@
 			image-rendering: pixelated;
 			-ms-interpolation-mode: nearest-neighbor;
 		}
-
-		@media screen and (orientation: portrait) {
-			body {
-				transform: rotate(90deg);
-			}
-		}
+		
 	</style>
 
 	<!-- Mobile browser detection -->
@@ -79,8 +74,6 @@
 					if (isMobileBrowser()) {
 						console.log("Running in a mobile web browser");
 						document.body.style.transform = "rotate(90deg)";
-						document.body.style.width = "100vh";
-						document.body.style.height = "100vw";
 					} else {
 						console.log("Running in a desktop web browser");
 					}
