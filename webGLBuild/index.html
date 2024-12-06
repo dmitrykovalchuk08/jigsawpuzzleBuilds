@@ -41,6 +41,15 @@
 			image-rendering: pixelated;
 			-ms-interpolation-mode: nearest-neighbor;
 		}
+
+		@media screen and (orientation: portrait) {
+			body {
+				transform: rotate(90deg);
+				width: 100vh;
+				height: 100vw;
+				overflow: hidden;
+			}
+		}
 	</style>
 </head>
 
@@ -165,15 +174,15 @@
 			// Auto-execute logic based on whether it's a mobile browser
 			if (isMobileBrowser()) {
 				console.log("Running in a mobile web browser");
-				screen.orientation.lock("landscape").catch(function (e) {
-					console.log("error while locking orientation " + e);
-				});
-				
+				document.body.style.transform = "rotate(90deg)";
+				document.body.style.width = "100vh";
+				document.body.style.height = "100vw";
 			} else {
 				console.log("Running in a desktop web browser");
 			}
 		})();
 	</script>
+	
 	<!-- End Mobile browser detection -->
 </body>
 
