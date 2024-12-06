@@ -41,48 +41,25 @@
 			image-rendering: pixelated;
 			-ms-interpolation-mode: nearest-neighbor;
 		}
+
+		#fullScreenButton {
+			display: none; /* Initially hidden */
+			position: fixed;
+			bottom: 20px; /* Distance from the bottom of the screen */
+			right: 20px; /* Distance from the right of the screen */
+			padding: 10px 20px;
+			background-color: #007bff; /* Blue color */
+			color: white;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			font-size: 16px;
+		}
+
+		#fullScreenButton:hover {
+			background-color: #0056b3; /* Darker blue on hover */
+		}
 	</style>
-
-	<!-- Mobile browser detection -->
-	<script type="text/javascript">
-
-		document.addEventListener("DOMContentLoaded", function () {
-					function isMobileBrowser() {
-						// First, check if userAgentData (modern feature) indicates a mobile device
-						if (navigator.userAgentData && navigator.userAgentData.mobile) {
-							return true;
-						}
-
-						// Regular expression to match mobile device user agents
-						const mobileUserAgentPattern = /Mobi|Android|iPhone|iPad|iPod|Windows Phone|BlackBerry|BB10|Opera Mini|IEMobile|Mobile Safari|webOS|Symbian|Kindle|Silk|Bada|Tizen|MeeGo/i;
-
-						// Check the user agent string
-						if (mobileUserAgentPattern.test(navigator.userAgent)) {
-							return true;
-						}
-
-						// Additional check for window properties (tablets, phones in landscape)
-						if (typeof window.orientation !== 'undefined' || navigator.maxTouchPoints > 1) {
-							return true;
-						}
-
-						return false;
-					}
-
-					// Auto-execute logic based on whether it's a mobile browser
-					if (isMobileBrowser()) {
-						console.log("Running in a mobile web browser");
-						screen.orientation.lock("landscape").catch(function (e) {
-							console.log("error while locking orientation " + e);
-						});
-					} else {
-						console.log("Running in a desktop web browser");
-					}
-				}
-		);
-	</script>
-
-	<!-- End Mobile browser detection -->
 </head>
 
 <body>
@@ -153,6 +130,8 @@
 		</script>
 	</div>
 
+	<button id="fullScreenButton">Full Screen</button>
+	
 	<!-- Google Analytics -->
 	<script type="module">
 		// Import the functions you need from the SDKs you need
@@ -177,6 +156,45 @@
 		window.logEvent = logEvent;
 	</script>
 	<!-- End Google Analytics -->
+
+	<!-- FS button -->
+	<script>
+		function isMobileBrowser() {
+			// First, check if userAgentData (modern feature) indicates a mobile device
+			if (navigator.userAgentData && navigator.userAgentData.mobile) {
+				return true;
+			}
+
+			// Regular expression to match mobile device user agents
+			const mobileUserAgentPattern = /Mobi|Android|iPhone|iPad|iPod|Windows Phone|BlackBerry|BB10|Opera Mini|IEMobile|Mobile Safari|webOS|Symbian|Kindle|Silk|Bada|Tizen|MeeGo/i;
+
+			// Check the user agent string
+			if (mobileUserAgentPattern.test(navigator.userAgent)) {
+				return true;
+			}
+
+			// Additional check for window properties (tablets, phones in landscape)
+			if (typeof window.orientation !== 'undefined' || navigator.maxTouchPoints > 1) {
+				return true;
+			}
+
+			return false;
+		}
+
+		// screen.orientation.lock("landscape").catch(function (e) {
+		// 	console.log("error while locking orientation " + e);
+		// });
+				
+		const button = document.getElementById('fullScreenButton');
+
+		if (isMobileBrowser()) {
+			console.log("Running in a mobile web browser");
+			button.style.display = 'block'; // Show the button
+		} else {
+			console.log("Running in a desktop web browser");
+			button.style.display = 'none'; // Hide the button
+		}
+	</script>
 </body>
 
 </html>
