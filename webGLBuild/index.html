@@ -41,7 +41,6 @@
 			image-rendering: pixelated;
 			-ms-interpolation-mode: nearest-neighbor;
 		}
-		
 	</style>
 
 	<!-- Mobile browser detection -->
@@ -73,7 +72,9 @@
 					// Auto-execute logic based on whether it's a mobile browser
 					if (isMobileBrowser()) {
 						console.log("Running in a mobile web browser");
-						// document.body.style.transform = "rotate(90deg)";
+						screen.orientation.lock("landscape").catch(function (e) {
+							console.log("error while locking orientation " + e);
+						});
 					} else {
 						console.log("Running in a desktop web browser");
 					}
