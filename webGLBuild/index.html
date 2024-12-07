@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en-us">
-
 <head>
 	<meta name="google-adsense-account" content="ca-pub-2577840413102430">
 	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2577840413102430"
@@ -22,11 +21,12 @@
 
 		div#gameContainer {
 			background: transparent !important;
-			position: absolute;
+			position: relative;
 		}
 
 		div#gameContainer canvas {
 			position: absolute;
+			
 		}
 
 		div#gameContainer canvas[data-pixel-art="true"] {
@@ -45,7 +45,6 @@
 </head>
 
 <body>
-
 	<div id="gameContainer">
 		<canvas id="unity-canvas" data-pixel-art=""></canvas>
 		<script src="Build/webGLBuild.loader.js"></script>
@@ -60,12 +59,7 @@
 				productName: "Puzzle Queen",
 				productVersion: "1.0.0",
 			};
-			var scaleToFit;
-			try {
-				scaleToFit = !!JSON.parse("");
-			} catch (e) {
-				scaleToFit = true;
-			}
+			
 			function progressHandler(progress) {
 				var percent = progress * 100 + '%';
 				canvas.style.background = 'linear-gradient(to right, white, white ' + percent + ', transparent ' + percent + ', transparent) no-repeat center';
@@ -73,24 +67,15 @@
 			}
 			function onResize() {
 				var container = canvas.parentElement;
-				var w;
-				var h;
-
-				if (scaleToFit) {
-					w = window.innerWidth;
-					h = window.innerHeight;
-
-					var r = 600 / 960;
-
-					if (w * r > window.innerHeight) {
-						w = Math.min(w, Math.ceil(h / r));
-					}
-					h = Math.floor(w * r);
-				} else {
-					w = 960;
-					h = 600;
+				
+				var w = window.innerWidth;
+				var h = window.innerHeight;
+				var r = 600 / 960;
+				if (w * r > window.innerHeight) {
+					w = Math.min(w, Math.ceil(h / r));
 				}
-
+				h = Math.floor(w * r);
+				
 				container.style.width = canvas.style.width = w + "px";
 				container.style.height = canvas.style.height = h + "px";
 				container.style.top = Math.floor((window.innerHeight - h) / 2) + "px";
@@ -112,7 +97,7 @@
 			}
 		</script>
 	</div>
-
+	
 	<!-- Google Analytics -->
 	<script type="module">
 		// Import the functions you need from the SDKs you need
@@ -137,7 +122,6 @@
 		window.logEvent = logEvent;
 	</script>
 	<!-- End Google Analytics -->
-
 </body>
 
 </html>
