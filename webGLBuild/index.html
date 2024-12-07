@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en-us">
-
 <head>
 	<meta name="google-adsense-account" content="ca-pub-2577840413102430">
 	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2577840413102430"
@@ -41,25 +40,6 @@
 			image-rendering: optimize-contrast;
 			image-rendering: pixelated;
 			-ms-interpolation-mode: nearest-neighbor;
-		}
-
-		#fullScreenButton {
-			display: none; 
-			position: absolute;
-			bottom: 20px; /* Distance from the bottom of the screen */
-			right: 20px; /* Distance from the right of the screen */
-			padding: 10px 20px;
-			background-color: #007bff; /* Blue color */
-			color: white;
-			border: none;
-			border-radius: 5px;
-			cursor: pointer;
-			font-size: 20px;
-			z-index: 9999;
-		}
-
-		#fullScreenButton:hover {
-			background-color: #0056b3; /* Darker blue on hover */
 		}
 	</style>
 </head>
@@ -116,8 +96,6 @@
 				document.getElementsByTagName('head')[0].appendChild(meta);
 			}
 		</script>
-		
-		<button id="fullScreenButton">Fullscreen</button>
 	</div>
 	
 	<!-- Google Analytics -->
@@ -144,63 +122,6 @@
 		window.logEvent = logEvent;
 	</script>
 	<!-- End Google Analytics -->
-
-	<!-- FS button -->
-	<script>
-		function isMobileBrowser() {
-			// First, check if userAgentData (modern feature) indicates a mobile device
-			if (navigator.userAgentData && navigator.userAgentData.mobile) {
-				return true;
-			}
-
-			// Regular expression to match mobile device user agents
-			const mobileUserAgentPattern = /Mobi|Android|iPhone|iPad|iPod|Windows Phone|BlackBerry|BB10|Opera Mini|IEMobile|Mobile Safari|webOS|Symbian|Kindle|Silk|Bada|Tizen|MeeGo/i;
-
-			// Check the user agent string
-			if (mobileUserAgentPattern.test(navigator.userAgent)) {
-				return true;
-			}
-
-			// Additional check for window properties (tablets, phones in landscape)
-			if (typeof window.orientation !== 'undefined' || navigator.maxTouchPoints > 1) {
-				return true;
-			}
-
-			return false;
-		}
-	
-		const button = document.getElementById('fullScreenButton');
-
-		if (isMobileBrowser()) 
-		{
-			console.log("Running in a mobile web browser");
-			button.style.display = 'block'; // Show the button
-		} else {
-			console.log("Running in a desktop web browser");
-			button.style.display = 'none'; // Hide the button
-		}
-		
-		// Add an event handler for the button
-		button.addEventListener('click', () => {
-			console.log('Button was clicked!');
-			var elem = document.getElementById("gameContainer");
-			var isInFullScreen = document.fullscreenElement !== null;
-			if (!isInFullScreen) {
-				elem.requestFullscreen();
-				screen.orientation.lock("landscape").catch(function (e) {
-					console.log("error while locking orientation " + e);
-				});
-				button.innerText = "Exit FullScreen";
-				button.style.fontSize = "14px";
-			}
-			else if (isInFullScreen) {
-				document.exitFullscreen();
-				screen.orientation.unlock();
-				button.innerText = "FullScreen";
-				button.style.fontSize = "20px";
-			}
-		});
-	</script>
 </body>
 
 </html>
