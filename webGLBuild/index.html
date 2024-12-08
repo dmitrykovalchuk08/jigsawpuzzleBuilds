@@ -70,6 +70,8 @@
 </head>
 
 <body>
+	<button id="fullScreenButton">show inter</button>
+
 	<!-- Google Ads -->
 	<!-- interstitial -->
 	<script async data-adbreak-test="on" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2577840413102430" 
@@ -85,6 +87,12 @@
 		
 		window.adsbygoogle = window.adsbygoogle || [];
 		const adBreak = adConfig = function(o) { adsbygoogle.push(o); }
+		const button = document.getElementById('fullScreenButton');
+		button.addEventListener('click', () => {
+			console.info(" pressed");
+			adBreak();
+			console.info("call done");
+		});
 	</script>
 
 	<!-- Test Horizontal -->
@@ -177,15 +185,6 @@
 	</script>
 	<!-- End Google Analytics -->
 
-	<button id="fullScreenButton">show inter</button>
-
-	<script>
-		const button = document.getElementById('fullScreenButton');
-		button.addEventListener('click', () => {
-			adBreak();
-		});
-
-	</script>
 </body>
 
 </html>
