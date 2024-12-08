@@ -1,19 +1,29 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-	<meta name="google-adsense-account" content="ca-pub-2577840413102430">
-	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2577840413102430"
-			crossorigin="anonymous"></script>
-	
 	<meta charset="utf-8">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="google-adsense-account" content="ca-pub-2577840413102430">
+	
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+			crossorigin="anonymous"></script>
+	<script>
+		(adsbygoogle = window.adsbygoogle || []).push({
+			google_ad_client: "ca-pub-2577840413102430",
+			enable_page_level_ads: true
+		});
+	</script>
+	
 	<title>Puzzle Queen</title>
 	<style>
-		html,
-		body {
+		@page {
+			size: landscape;
+		}
+		
+		html, body {
 			background: #000;
-			width: 100vw;
-			height: 100vh;
+			width: 100%;
+			height: 100%;
 			overflow: visible;
 			padding: 0;
 			margin: 0;
@@ -26,12 +36,10 @@
 			position: relative;
 			justify-content: center; /* Horizontally center */
 			align-items: center;    /* Vertically center */
-
 		}
 
 		div#gameContainer canvas {
 			position: absolute;
-			
 		}
 
 		div#gameContainer canvas[data-pixel-art="true"] {
@@ -46,66 +54,20 @@
 			image-rendering: pixelated;
 			-ms-interpolation-mode: nearest-neighbor;
 		}
-
-		#fullScreenButton {
-			display: block; 
-			position: fixed;
-			bottom: 20px; /* Distance from the bottom of the screen */
-			right: 20px; /* Distance from the right of the screen */
-			padding: 10px 20px;
-			background-color: #007bff; /* Blue color */
-			color: white;
-			border: none;
-			border-radius: 10px;
-			cursor: pointer;
-			font-size: 24px;
-			z-index: 999;
-		}
-
-		#fullScreenButton:hover {
-			background-color: #0056b3; /* Darker blue on hover */
-		}
-
 	</style>
 </head>
 
 <body>
-	<button id="fullScreenButton">show inter</button>
-
 	<!-- Google Ads -->
-	<!-- interstitial -->
-	<script async data-adbreak-test="on" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2577840413102430" 
-	crossorigin="anonymous"></script>
-	<script>
-		adConfig({
-			sound: true,
-			frequency: {
-			cap: 1,
-			period: 60
-			}
-		});
-		
-		window.adsbygoogle = window.adsbygoogle || [];
-		const adBreak = adConfig = function(o) { adsbygoogle.push(o); }
-		const button = document.getElementById('fullScreenButton');
-		button.addEventListener('click', () => {
-			console.info(" pressed");
-			adBreak();
-			console.info("call done");
-		});
-	</script>
-
 	<!-- Test Horizontal -->
 	<ins class="adsbygoogle"
-		style="display:inline-block;width:728px;height:90px"
-		data-ad-client="ca-pub-2577840413102430"
-		data-ad-slot="9605462701"></ins>
+		 style="display:inline-block;width:728px;height:90px"
+		 data-ad-client="ca-pub-2577840413102430"
+		 data-ad-slot="9605462701"></ins>
 	<script>
 		(adsbygoogle = window.adsbygoogle || []).push({});
 	</script>
-
 	<!-- End Google Ads -->
-
 	
 	<div id="gameContainer">
 		<canvas id="unity-canvas" data-pixel-art=""></canvas>
@@ -184,7 +146,6 @@
 		window.logEvent = logEvent;
 	</script>
 	<!-- End Google Analytics -->
-
 </body>
 
 </html>
