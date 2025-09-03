@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "323832948113",
+    "project_id": "pkx-m-82ac3",
+    "storage_bucket": "pkx-m-82ac3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:323832948113:android:9bbda2d1d148be3bd86630",
+        "android_client_info": {
+          "package_name": "com.ampfork.pkxk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtFIvOXLkMbn6-jh2h-TmUD1SZsDIKVgw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
