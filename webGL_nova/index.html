@@ -111,10 +111,10 @@
 
 <body>
 
-	<!-- Splash screen with Start button -->
+	<!-- Splash screen -->
 	<div id="splash">
 		<div id="splash-title">Jigsaw Nova</div>
-		<button id="start-btn">Play</button>
+		<!-- <button id="start-btn">Play</button> -->
 		<div id="load-wrap">
 			<div id="load-bar-track"><div id="load-bar-fill"></div></div>
 			<div id="load-percent">0%</div>
@@ -138,7 +138,6 @@
 	<script>
 		(function () {
 			var splash      = document.getElementById('splash');
-			var startBtn    = document.getElementById('start-btn');
 			var loadWrap    = document.getElementById('load-wrap');
 			var loadFill    = document.getElementById('load-bar-fill');
 			var loadPercent = document.getElementById('load-percent');
@@ -179,8 +178,6 @@
 			}
 
 			function startUnity() {
-				startBtn.disabled = true;
-				startBtn.textContent = 'Loading\u2026';
 				loadWrap.classList.add('visible');
 
 				container.style.display = '';
@@ -198,8 +195,8 @@
 					});
 			}
 
-			startBtn.addEventListener('click', startUnity);
 			window.addEventListener('resize', onResize);
+			startUnity();
 		})();
 	</script>
 
