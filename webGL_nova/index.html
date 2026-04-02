@@ -101,10 +101,11 @@
 			top: 0; left: 0;
 			width: 100%; height: 100%;
 			background: transparent !important;
+			overflow: hidden;
 		}
 		#gameContainer canvas {
-			width: 100% !important;
-			height: 100% !important;
+			position: absolute;
+			display: block;
 		}
 	</style>
 </head>
@@ -145,6 +146,7 @@
 			var errorMsg    = document.getElementById('error-msg');
 			var container   = document.getElementById('gameContainer');
 			var canvas      = document.getElementById('unity-canvas');
+			var lockedAspectRatio = null;
 
 			var config = {
 				dataUrl:      "Build/webGL_nova.data.unityweb",
@@ -168,17 +170,37 @@
 			}
 
 			function onResize() {
-				var w = window.innerWidth;
-				var h = window.innerHeight;
+				var viewportWidth = window.innerWidth;
+				var viewportHeight = window.innerHeight;
 
-				canvas.style.width  = w + 'px';
-				canvas.style.height = h + 'px';
-				canvas.width  = w * (window.devicePixelRatio || 1);
-				canvas.height = h * (window.devicePixelRatio || 1);
+				if (!lockedAspectRatio) {
+					lockedAspectRatio = viewportWidth / viewportHeight;
+				}
+
+				var targetWidth = viewportWidth;
+				var targetHeight = Math.round(targetWidth / lockedAspectRatio);
+
+				if (targetHeight > viewportHeight) {
+					targetHeight = viewportHeight;
+					targetWidth = Math.round(targetHeight * lockedAspectRatio);
+				}
+
+				var leftOffset = Math.floor((viewportWidth - targetWidth) / 2);
+				var topOffset = Math.floor((viewportHeight - targetHeight) / 2);
+
+				canvas.style.left = leftOffset + 'px';
+				canvas.style.top = topOffset + 'px';
+				canvas.style.width = targetWidth + 'px';
+				canvas.style.height = targetHeight + 'px';
+
+				var pixelRatio = window.devicePixelRatio || 1;
+				canvas.width = Math.floor(targetWidth * pixelRatio);
+				canvas.height = Math.floor(targetHeight * pixelRatio);
 			}
 
 			function startUnity() {
 				loadWrap.classList.add('visible');
+				lockedAspectRatio = window.innerWidth / window.innerHeight;
 
 				container.style.display = '';
 				onResize();
